@@ -1,0 +1,112 @@
+---
+title: "表格10"
+author: "lavaan"
+date: "`r Sys.Date()`"
+output: 
+  officedown::rdocx_document:
+    number_sections: yes
+    df_print: kable
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo     = FALSE,
+    warning  = FALSE, 
+    message  = FALSE,
+    fig.asp  = 0.618,
+    dpi      = 300
+)
+options(digits = 3)
+```
+
+
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>% 
+  drop_na()
+
+sjPlot::view_df(rawdf)
+```
+
+
+
+# 表10
+
+
+```{r}
+d10 <- rawdf %>% 
+  rowwise() %>% 
+  mutate(
+    Ambient  = mean(c_across(num_range("Ambient", 1:4))),
+    Space    = mean(c_across(num_range("Space",   1:6))),
+    Signs    = mean(c_across(num_range("Signs",   1:6))),
+    
+    Social    = mean(c_across(num_range("Social", 1:5))),
+    Symbolic  = mean(c_across(num_range("Symbol", 1:3))),
+    Natural   = mean(c_across(num_range("Nature", 1:3)))
+  ) %>% 
+  ungroup() %>% 
+
+  mutate(
+    Experience_seeking       = es1  + es2,
+    Thrill_adventure_seeking = tas1 + tas2,
+    Disinhibition            = dis1 + dis2,
+    
+    Destination_familiarity  = fm1 + fm2 + fm3,
+    
+    Romance_and_relax        = ex1  + ex11 + ex14 + ex2 + ex5 + ex15 + ex4,
+    Chance_encounter         = ex10 + ex9  + ex8  + ex6 + ex7,
+    Sense_of_loss            = ex17 + ex18 + ex16,
+    Aberration               = ex3  + ex13 + ex12,
+    
+    Emotional_arousal        = em1 + em2 + em3 + em4 + em5
+  ) 
+```
+
+
+```{r}
+library(lavaan)
+
+model <- '
+
+  # latent variables
+  Physical  =~ Ambient + Space + Signs
+
+  Sensation_seeking =~ Experience_seeking + Thrill_adventure_seeking + Disinhibition
+
+  Liminal_experience =~ Romance_and_relax + Chance_encounter + Sense_of_loss + Aberration 
+  
+  # regressions
+  Emotional_arousal ~  H1a * Physical + H2a * Social + H3a *Symbolic +  H4a * Natural
+  Liminal_experience  ~ H1b * Physical +  H2b * Social + H3b * Symbolic + H4b * Natural + H5 * Emotional_arousal + H7 *Sensation_seeking + H8 * Destination_familiarity
+
+  # define
+  MH6a  := H5 * H1a
+  MH6b  := H5 * H2a
+  MH6c  := H5 * H3a
+  MH6d  := H5 * H4a
+
+'
+
+fit_sem10 <- sem(model, data = d10)
+```
+
+
+```{r}
+fit_sem10 %>% 
+  parameterEstimates() %>% 
+  filter(op %in% c("~", ":=")) %>% 
+  filter(str_detect(label, "^H")) %>% 
+  mutate(path = str_c(rhs, "-->", lhs)) %>% 
+  select(label, path, est, z, pvalue) %>% 
+  arrange(label) %>% 
+  mutate(label = if_else(label == "H8", "-", label)) %>% 
+  flextable::flextable() %>% 
+  flextable::colformat_double(digits = 4) %>% 
+  flextable::autofit() 
+```
+

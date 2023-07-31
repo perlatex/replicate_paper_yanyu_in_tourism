@@ -1,0 +1,103 @@
+---
+title: "表格5"
+author: "lavaan"
+date: "`r Sys.Date()`"
+output: 
+  officedown::rdocx_document:
+    number_sections: yes
+    df_print: kable
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo     = FALSE,
+    warning  = FALSE, 
+    message  = FALSE,
+    fig.asp  = 0.618,
+    dpi      = 300
+)
+options(digits = 3)
+```
+
+
+
+
+```{r}
+library(tidyverse)
+library(gtsummary)
+
+rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>% 
+  drop_na()
+
+sjPlot::view_df(rawdf)
+```
+
+
+
+
+# 表5
+
+```{r}
+d5 <- rawdf %>% 
+  select(ex1:ex18) 
+```
+
+
+```{r}
+library(lavaan)
+
+model_cfa <- '
+
+  romance_and_relax =~ ex1 + ex11 + ex14 + ex2 + ex5 + ex15 + ex4
+  chance_encounter  =~ ex10 + ex9 + ex8 + ex6 + ex7
+  sense_of_loss     =~ ex17 + ex18 + ex16 
+  aberration        =~ ex3 + ex13 + ex12
+  
+'
+
+fit_cfa5 <- cfa(model = model_cfa, data = d5) 
+```
+
+
+
+
+```{r}
+d5 <- rawdf %>% 
+  transmute(
+    romance_and_relax = ex1 + ex11 + ex14 + ex2 + ex5 + ex15 + ex4,
+    chance_encounter  = ex10 + ex9 + ex8 + ex6 + ex7,
+    sense_of_loss     = ex17 + ex18 + ex16,
+    aberration        = ex3 + ex13 + ex12
+ )
+```
+
+
+```{r}
+d5 %>% 
+  summarise(
+    across(everything(), list(Mean = mean, SD = sd))
+  ) %>% 
+  pivot_longer(
+    cols = everything(),
+    names_to = c("variable", ".value"),
+    names_pattern = "(.*)_(Mean|SD)"
+  ) %>% 
+
+  left_join(
+    d5 %>% 
+      corrr::correlate(
+        diagonal = semTools::AVE(fit_cfa5) %>% sqrt()
+      ) %>% 
+      corrr::shave(),
+    by = join_by("variable" == "term")
+  ) %>%  
+  set_names(c(" ", "Mean", "SD", "1", "2", "3", "4")) %>% 
+  flextable::flextable() %>% 
+  flextable::colformat_double(digits = 3) %>% 
+  flextable::autofit() %>% 
+  flextable::add_footer_lines(
+    "Note: The bold diagonal elements are square roots of AVE for each construct. Below diagonal elements are the correlations between constructs.")
+```
+
+
