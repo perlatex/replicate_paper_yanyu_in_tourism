@@ -53,6 +53,7 @@ d7 <- rawdf %>%
     Experience_seeking       = es1  + es2,
     Thrill_adventure_seeking = tas1 + tas2,
     Disinhibition            = dis1 + dis2,
+    
     romance_and_relax        = ex1  + ex11 + ex14 + ex2 + ex5 + ex15 + ex4,
     chance_encounter         = ex10 + ex9  + ex8  + ex6 + ex7,
     sense_of_loss            = ex17 + ex18 + ex16,

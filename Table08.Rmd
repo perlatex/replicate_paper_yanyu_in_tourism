@@ -37,7 +37,7 @@ sjPlot::view_df(rawdf)
 # 准备
 
 ```{r}
-d7 <- rawdf %>% 
+d8 <- rawdf %>% 
   rowwise() %>% 
   mutate(
     Ambient  = mean(c_across(num_range("Ambient", 1:4))),
@@ -82,7 +82,7 @@ model <- '
 
 '
 
-fit_cfa7 <- cfa(model, data = d7)
+fit_cfa8 <- cfa(model, data = d8)
 ```
 
 

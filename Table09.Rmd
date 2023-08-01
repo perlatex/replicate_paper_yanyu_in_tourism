@@ -36,7 +36,7 @@ rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>%
 # 准备
 
 ```{r}
-d7 <- rawdf %>% 
+d9 <- rawdf %>% 
   rowwise() %>% 
   mutate(
     Ambient  = mean(c_across(num_range("Ambient", 1:4))),
@@ -81,7 +81,7 @@ model <- '
 
 '
 
-fit_cfa7 <- cfa(model, data = d7)
+fit_cfa9 <- cfa(model, data = d9)
 ```
 
 
@@ -90,7 +90,7 @@ fit_cfa7 <- cfa(model, data = d7)
 区分效度
 
 ```{r}
-fit_cfa7 %>% 
+fit_cfa9 %>% 
   semTools::discriminantValidity() %>%  
   select(lhs, rhs, est, ci.lower, ci.upper) %>%
   flextable::flextable() %>% 

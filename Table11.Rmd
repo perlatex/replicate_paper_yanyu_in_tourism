@@ -41,11 +41,7 @@ d11 <- rawdf %>%
   mutate(
     Ambient  = mean(c_across(num_range("Ambient", 1:4))),
     Space    = mean(c_across(num_range("Space",   1:6))),
-    Signs    = mean(c_across(num_range("Signs",   1:6))),
-    
-    Social    = mean(c_across(num_range("Social", 1:5))),
-    Symbolic  = mean(c_across(num_range("Symbol", 1:3))),
-    Natural   = mean(c_across(num_range("Nature", 1:3)))
+    Signs    = mean(c_across(num_range("Signs",   1:6)))
   ) %>% 
   ungroup() %>% 
 
@@ -54,14 +50,11 @@ d11 <- rawdf %>%
     Thrill_adventure_seeking = tas1 + tas2,
     Disinhibition            = dis1 + dis2,
     
-    Destination_familiarity  = fm1 + fm2 + fm3,
+    romance_and_relax        = ex1  + ex11 + ex14 + ex2 + ex5 + ex15 + ex4,
+    chance_encounter         = ex10 + ex9  + ex8  + ex6 + ex7,
+    sense_of_loss            = ex17 + ex18 + ex16,
+    aberration               = ex3  + ex13 + ex12
     
-    Romance_and_relax        = ex1  + ex11 + ex14 + ex2 + ex5 + ex15 + ex4,
-    Chance_encounter         = ex10 + ex9  + ex8  + ex6 + ex7,
-    Sense_of_loss            = ex17 + ex18 + ex16,
-    Aberration               = ex3  + ex13 + ex12,
-    
-    Emotional_arousal        = em1 + em2 + em3 + em4 + em5
   ) 
 ```
 
@@ -73,11 +66,19 @@ model <- '
 
   # latent variables
   Physical  =~ Ambient + Space + Signs
+  Social    =~ Social1 + Social2 + Social3 + Social4 + Social5
+  Symbolic  =~ Symbol1 + Symbol2 + Symbol3
+  Natural   =~ Nature1 + Nature2 + Nature3
+
+  Emotional_arousal =~ em1 + em2 + em3 + em4 + em5
 
   Sensation_seeking =~ Experience_seeking + Thrill_adventure_seeking + Disinhibition
 
-  Liminal_experience =~ Romance_and_relax + Chance_encounter + Sense_of_loss + Aberration 
-  
+  Destination_familiarity =~ fm1 + fm2 + fm3 
+
+  Liminal_experience  =~ romance_and_relax + chance_encounter + sense_of_loss + aberration
+
+
   # regressions
   Emotional_arousal ~  H1a * Physical + H2a * Social + H3a *Symbolic +  H4a * Natural
   Liminal_experience  ~ H1b * Physical +  H2b * Social + H3b * Symbolic + H4b * Natural + H5 * Emotional_arousal + H7 *Sensation_seeking + H8 * Destination_familiarity
@@ -92,7 +93,6 @@ model <- '
 
 fit_sem11 <- sem(model, data = d11)
 ```
-
 
 ```{r}
 fit_sem11 %>% 
