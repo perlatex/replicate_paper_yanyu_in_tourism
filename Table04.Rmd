@@ -34,20 +34,31 @@ sjPlot::view_df(rawdf)
 
 
 
+
+
 # 表4
 
-
+随机选择，一半做EFA，一半做CFA
 ```{r}
 library(psych)
 
 d4 <- rawdf %>% 
-  select(ex1:ex18) 
+  select(ex1:ex18) %>% 
+  mutate(id = row_number())
+
+d4a  <- d4 %>% 
+  slice_sample(prop = 0.5)
+
+d4b <- anti_join(d4, d4a, by = join_by(id))
+
+d4a <- d4a %>% select(-id)
+d4b <- d4b %>% select(-id)
 ```
 
 ## efa
 
 ```{r}
-fit_efa4 <- d4 %>% 
+fit_efa4 <- d4a %>% 
   fa(nfactors = 4, 
      rotate   = "varimax", 
      fm       = "pa", 
@@ -111,6 +122,8 @@ d4_efa_loadings
 ## cfa
 
 ```{r}
+library(lavaan)
+
 model_cfa <- '
 
   romance_and_relax =~ ex1 + ex11 + ex14 + ex2 + ex5 + ex15 + ex4
@@ -120,7 +133,7 @@ model_cfa <- '
   
 '
 
-fit_cfa4 <- cfa(model = model_cfa, data = d4) 
+fit_cfa4 <- cfa(model = model_cfa, data = d4b) 
 ```
 
 
