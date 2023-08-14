@@ -80,9 +80,6 @@ AVE  <- semTools::AVE(fit_cfa3)
 
 
 
-
-
-
 ```{r}
 # 构念之间的相关系数矩阵
 fit_cfa3 %>% 
@@ -102,35 +99,5 @@ fit_cfa3 %>%
 
 
 
-
-
-
-
-```{r}
-d3 %>% 
-  summarise(
-    across(everything(), list(Mean = mean, SD = sd))
-  ) %>% 
-  pivot_longer(
-    cols = everything(),
-    names_to = c("variable", ".value"),
-    names_pattern = "(.*)_(Mean|SD)"
-  ) %>% 
-
-  left_join(
-    d3 %>% 
-      corrr::correlate(
-        diagonal = semTools::AVE(fit_cfa2) %>% sqrt()
-      ) %>% 
-      corrr::shave(),
-    by = join_by("variable" == "term")
-  ) %>%  
-  set_names(c(" ", "Mean", "SD", "1", "2", "3", "4")) %>% 
-  flextable::flextable() %>% 
-  flextable::colformat_double(digits = 3) %>% 
-  flextable::autofit() %>% 
-  flextable::add_footer_lines(
-    "Note: The bold diagonal elements are square roots of AVE for each construct. Below diagonal elements are the correlations between constructs.")
-```
 
 
