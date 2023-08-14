@@ -1,0 +1,106 @@
+---
+title: "表格1"
+author: "lavaan"
+date: "`r Sys.Date()`"
+output: 
+  officedown::rdocx_document:
+    number_sections: yes
+    df_print: kable
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo     = FALSE,
+    warning  = FALSE, 
+    message  = FALSE,
+    fig.asp  = 0.618,
+    dpi      = 300
+)
+options(digits = 3)
+```
+
+
+
+```{r}
+library(tidyverse)
+
+rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>% 
+  drop_na()
+```
+
+
+
+# 表1
+
+```{r}
+d1 <- rawdf %>% 
+  select(gender, age, edu, income, time) %>% 
+  mutate(gender = factor(gender, 
+                         labels = c(
+                           "0" = "",
+                           "1" = "male",
+                           "2" = "female"
+                         )),
+         age    = factor(age, 
+                         labels = c(
+                           "1" = "under 20",
+                           "2" = "21-30",
+                           "3" = "31-40",
+                           "4" = "above 41"
+                         )),
+         edu    = factor(edu,
+                         labels = c(
+                           "1" = "senior high school and below",
+                           "2" = "university",
+                           "3" = "master and above",
+                           "4" = ""
+                         )),
+         income = factor(income,
+                         labels = c(
+                           "1" = "under 1500",
+                           "2" = "1500-3000",
+                           "3" = "3001-5000",
+                           "4" = "5001-7500",
+                           "5" = "above 7501"
+                         )),
+         time   = factor(time,
+                         labels = c(
+                           "1" = "1",
+                           "2" = "2-3",
+                           "3" = "4-5",
+                           "4" = "> 6"
+                         )))
+
+```
+
+
+## 方法1
+```{r}
+library(gtsummary)
+d1 %>%
+  tbl_summary(
+    statistic = list(all_categorical() ~ "{n} ({p}%)")
+  )
+```
+
+
+## 方法2
+
+```{r}
+library(scales)
+
+d1 %>% 
+  pivot_longer(cols = everything()) %>% 
+  summarise(Frequency = n(), .by = c(name, value) ) %>% 
+  mutate(
+    Percent = scales::label_percent(accuracy = 0.01)(Frequency/sum(Frequency)), 
+    .by = name
+  ) %>% 
+  arrange(name, value) %>% 
+  flextable::as_grouped_data(groups = "name") %>% 
+  flextable::flextable() %>% 
+  flextable::autofit() %>% 
+  flextable::colformat_double(j = 4, digits = 3)
+```
+
