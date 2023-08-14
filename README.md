@@ -11,17 +11,17 @@
 
 | 表格           | 内容                                                         |
 |----------------|--------------------------------------------------------------|
-| [Table 1](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table01.Rmd)        | 样本概况                                                     |
-| [Table 2](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table02.Rmd)        | 旅游体验场景的验证性因子分析（CFA）的结果                    |
-| [Table 3](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table03.Rmd)        | 旅游体验场景的区别效度检验                                   |
-| [Table 4](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table04.Rmd)       | 艳遇体验的探索性因子分析（EFA）和验证性因子分析（CFA）的结果 |
-| [Table 5](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table05.Rmd)        | 艳遇体验的区别效度检验（平均提取方差AVE）                    |
-| [Table 6](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table06.Rmd)       | 艳遇体验的区别效度检验（置信区间）                           |
-| [Table 7](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table07.Rmd)       | 整体测量模型的验证性因子分析（CFA）的结果                    |
-| [Table 8](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table08.Rmd)        | 所有构念的区别效度检验（平均提取方差AVE）                    |
-| [Table 9](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table09.Rmd)        | 所有构念的区别效度检验（置信区间）                           |
-| [Table 10](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table10.Rmd)       | 结构方程模型的标准化系数                                     |
-| [Table 11](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table11.Rmd)       | 结构方程模型的中介效应检验                                   |
+| [Table 1](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table01_2order_construct.Rmd)        | 样本概况                                                     |
+| [Table 2](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table02_2order_construct.Rmd)        | 旅游体验场景的验证性因子分析（CFA）的结果                    |
+| [Table 3](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table03_2order_construct.Rmd)        | 旅游体验场景的区别效度检验                                   |
+| [Table 4](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table04_2order_construct.Rmd)       | 艳遇体验的探索性因子分析（EFA）和验证性因子分析（CFA）的结果 |
+| [Table 5](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table05_2order_construct.Rmd)        | 艳遇体验的区别效度检验（平均提取方差AVE）                    |
+| [Table 6](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table06_2order_construct.Rmd)       | 艳遇体验的区别效度检验（置信区间）                           |
+| [Table 7](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table07_2order_construct.Rmd)       | 整体测量模型的验证性因子分析（CFA）的结果                    |
+| [Table 8](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table08_2order_construct.Rmd)        | 所有构念的区别效度检验（平均提取方差AVE）                    |
+| [Table 9](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table09_2order_construct.Rmd)        | 所有构念的区别效度检验（置信区间）                           |
+| [Table 10](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table10_2order_construct.Rmd)       | 结构方程模型的标准化系数                                     |
+| [Table 11](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table11_2order_construct.Rmd)       | 结构方程模型的中介效应检验                                   |
 | [Table Appendix](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table_Appendix_A.Rmd) | 描述性统计                                                   |
 
 
