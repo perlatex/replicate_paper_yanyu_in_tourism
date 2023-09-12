@@ -11,18 +11,18 @@
 
 | 表格           | 内容                                                         |
 |----------------|--------------------------------------------------------------|
-| [Table 1](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table01_2order_construct.Rmd)        | 样本概况                                                     |
-| [Table 2](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table02_2order_construct.Rmd)        | 旅游体验场景的验证性因子分析（CFA）的结果                    |
-| [Table 3](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table03_2order_construct.Rmd)        | 旅游体验场景的区别效度检验                                   |
-| [Table 4](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table04_2order_construct.Rmd)       | 艳遇体验的探索性因子分析（EFA）和验证性因子分析（CFA）的结果 |
-| [Table 5](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table05_2order_construct.Rmd)        | 艳遇体验的区别效度检验（平均提取方差AVE）                    |
-| [Table 6](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table06_2order_construct.Rmd)       | 艳遇体验的区别效度检验（置信区间）                           |
-| [Table 7](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table07_2order_construct.Rmd)       | 整体测量模型的验证性因子分析（CFA）的结果                    |
-| [Table 8](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table08_2order_construct.Rmd)        | 所有构念的区别效度检验（平均提取方差AVE）                    |
-| [Table 9](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table09_2order_construct.Rmd)        | 所有构念的区别效度检验（置信区间）                           |
-| [Table 10](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table10_2order_construct.Rmd)       | 结构方程模型的标准化系数                                     |
-| [Table 11](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table11_2order_construct.Rmd)       | 结构方程模型的中介效应检验                                   |
-| [Table Appendix](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/Table_Appendix_A.Rmd) | 描述性统计                                                   |
+| [Table 1](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table01.R)        | 样本概况                                                     |
+| [Table 2](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table02.R)        | 旅游体验场景的验证性因子分析（CFA）的结果                    |
+| [Table 3](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table03.R)        | 旅游体验场景的区别效度检验                                   |
+| [Table 4](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table04.R)       | 艳遇体验的探索性因子分析（EFA）和验证性因子分析（CFA）的结果 |
+| [Table 5](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table05.R)        | 艳遇体验的区别效度检验（平均提取方差AVE）                    |
+| [Table 6](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table06.R)       | 艳遇体验的区别效度检验（置信区间）                           |
+| [Table 7](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table07.R)       | 整体测量模型的验证性因子分析（CFA）的结果                    |
+| [Table 8](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table08.R)        | 所有构念的区别效度检验（平均提取方差AVE）                    |
+| [Table 9](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table09.R)        | 所有构念的区别效度检验（置信区间）                           |
+| [Table 10](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table10.R)       | 结构方程模型的标准化系数                                     |
+| [Table 11](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table11.R)       | 结构方程模型的中介效应检验                                   |
+| [Table Appendix](https://github.com/perlatex/replicate_paper_yanyu_in_tourism/blob/main/code/Table_Appendix_A.R) | 描述性统计                                                   |
 
 
 # 数据
