@@ -26,7 +26,9 @@ options(digits = 3)
 library(tidyverse)
 
 rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>% 
-  drop_na()
+  drop_na() %>%
+  filter(gender %in% c(1, 2)) %>%
+  filter(edu %in% c(1, 2, 3))
 ```
 
 
@@ -34,43 +36,52 @@ rawdf <- haven::read_sav("./data/Liminal_Experience.sav") %>%
 # 表1
 
 ```{r}
-d1 <- rawdf %>% 
-  select(gender, age, edu, income, time) %>% 
-  mutate(gender = factor(gender, 
-                         labels = c(
-                           "0" = "",
-                           "1" = "male",
-                           "2" = "female"
-                         )),
-         age    = factor(age, 
-                         labels = c(
-                           "1" = "under 20",
-                           "2" = "21-30",
-                           "3" = "31-40",
-                           "4" = "above 41"
-                         )),
-         edu    = factor(edu,
-                         labels = c(
-                           "1" = "senior high school and below",
-                           "2" = "university",
-                           "3" = "master and above",
-                           "4" = ""
-                         )),
-         income = factor(income,
-                         labels = c(
-                           "1" = "under 1500",
-                           "2" = "1500-3000",
-                           "3" = "3001-5000",
-                           "4" = "5001-7500",
-                           "5" = "above 7501"
-                         )),
-         time   = factor(time,
-                         labels = c(
-                           "1" = "1",
-                           "2" = "2-3",
-                           "3" = "4-5",
-                           "4" = "> 6"
-                         )))
+
+d1 <- rawdf %>%
+  select(gender, age, edu, income, time) %>%
+  mutate(
+    gender = factor(gender,
+      levels = c(1, 2),
+      labels = c("male", "female")
+    ),
+    age = factor(age,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "under 20",
+        "21-30",
+        "31-40",
+        "above 41"
+      )
+    ),
+    edu = factor(edu,
+      levels = c(1, 2, 3),
+      labels = c(
+        "senior high school and below",
+        "university",
+        "master and above"
+      )
+    ),
+    income = factor(income,
+      levels = c(1, 2, 3, 4, 5),
+      labels = c(
+        "under 1500",
+        "1500-3000",
+        "3001-5000",
+        "5001-7500",
+        "above 7501"
+      )
+    ),
+    time = factor(time,
+      levels = c(1, 2, 3, 4),
+      labels = c(
+        "1",
+        "2-3",
+        "4-5",
+        "> 6"
+      )
+    )
+  )
+
 
 ```
 
