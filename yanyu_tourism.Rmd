@@ -21,6 +21,7 @@ csl: apa-5th-edition.csl
 link-citations: yes
 linkcolor: red
 urlcolor: red
+linestretch: 1.25
 classoptions: "hyperref, 12pt, a4paper"
 abstract: |
   Tourism destinations serve as liminal places where tourists can be temporarily free of their secular obligations, therefore cultivating a fertile ground for Yanyu (艳遇), a typical liminal experience, to grow. However, little is known about which factors drive tourists liminal experiences. Based on  stimuli-organism-response (SOR) theory and sensation seeking theory, this study examines the impact of tourscapes and sensation-seeking on liminal experiences by using data collected in Lijiang, a city named “the capital of Yanyu”, in China. The findings reveal that physical and social tourscapes have positive effects on liminal experiences, and that socially symbolic and natural tourscapes have positive effects on emotional arousal and liminal experience. Emotional arousal mediates the effects of socially symbolic and natural tourscapes on liminal experience, and tourists sensation-seeking motivations have a positive significant effect on those liminal experiences. Lastly, the theoretical and managerial implications of the study's findings are discussed.
